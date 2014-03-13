@@ -3,7 +3,7 @@
 
 <h2>Contents</h2>
 
-1. Create Fragments from XML
+1. FragmentFromXML
 	
 	In this sample we create a fragment from an XML layout file.
 
