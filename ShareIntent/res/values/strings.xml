@@ -4,5 +4,9 @@
     <string name="app_name">ShareIntent</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="share_text">Share Text</string>
+    <string name="share_text_not_empty_content_message">Please, enter a valid text content.</string>
+    
 
 </resources>

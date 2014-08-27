@@ -1,6 +1,9 @@
 package com.lalongooo.shareintent;
 
+import com.lalongooo.shareintent.constants.Samples;
+
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
 		String[] values = new String[]
 				{
-				"Text"
+				Samples.SHARE_TEXT
 				};
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
@@ -39,19 +42,15 @@ public class MainActivity extends ActionBarActivity {
 			TextView tv = (TextView) view;
 			String text = (String) tv.getText();
 			
-			if(text.equals("Text")){
-				shareText();
+			if(text.equals(Samples.SHARE_TEXT)){
+				startActivity(ShareTextActivity.class);
 			}
 		}
 	};
-
-	private void shareText() {
-		Intent sendIntent = new Intent();
-		sendIntent.setAction(Intent.ACTION_SEND);
-		sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-		sendIntent.setType("text/plain");
-		startActivity(sendIntent);
-	}
 	
+	private void startActivity(Class<? extends Activity> a){
+		Intent intent = new Intent().setClass(this, a.getClass());
+		startActivity(intent);		
+	}	
 	
 }
