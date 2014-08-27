@@ -39,8 +39,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			
-			TextView tv = (TextView) view;
-			String text = (String) tv.getText();
+			String text = (String) ( (TextView) view ).getText();
 			
 			if(text.equals(Samples.SHARE_TEXT)){
 				startActivity(ShareTextActivity.class);
