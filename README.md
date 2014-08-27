@@ -11,3 +11,5 @@
 2. **ShareIntent**
 	
 	We'll show different ways to share content.
+
+	2.1 Text: Send and received text plain intents.
