@@ -46,11 +46,13 @@ public class MainActivity extends ActionBarActivity {
 				startActivity(ShareTextActivity.class);
 			}
 		}
+
 	};
 	
-	private void startActivity(Class<? extends Activity> a){
-		Intent intent = new Intent().setClass(this, a.getClass());
-		startActivity(intent);		
-	}	
+	private void startActivity(Class<? extends Activity> c) {
+		Intent intent = new Intent(this, c);
+		startActivity(intent);	
+	}
+	
 	
 }
