@@ -1,18 +1,16 @@
 package com.lalongooo.spinnersample;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.permutassep.model.KeyValueSpinner;
 import com.permutassep.model.State;
 import com.permutassep.model.StateSpinnerAdapter;
+import com.permutassep.model.StateSpinnerBaseAdapter;
 
 import java.util.ArrayList;
 
@@ -42,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
             alStates.add(new State(i, states[i]));
         }
 
-        spnState.setAdapter(new StateSpinnerAdapter(this, alStates));
+        spnState.setAdapter(new StateSpinnerBaseAdapter(getApplicationContext(), alStates));
         spnState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

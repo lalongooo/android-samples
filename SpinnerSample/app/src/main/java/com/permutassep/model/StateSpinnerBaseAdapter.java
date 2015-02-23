@@ -1,0 +1,49 @@
+package com.permutassep.model;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+/**
+ * Created by lalongooo on 23/02/15.
+ */
+public class StateSpinnerBaseAdapter extends BaseAdapter {
+
+    private Context context;
+    private ArrayList<State> states = new ArrayList<State>();
+
+    public StateSpinnerBaseAdapter(Context context, ArrayList<State> states) {
+        this.context = context;
+        this.states = states;
+    }
+
+    @Override
+    public int getCount() {
+        return states.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return states.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return states.get(position).getId();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        TextView textview = (TextView) inflater.inflate(android.R.layout.simple_list_item_1, null);
+        textview.setText(states.get(position).getStateName());
+        textview.setTextColor(Color.BLACK);
+        return textview;
+    }
+}
