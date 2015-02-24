@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.permutassep.model.State;
-import com.permutassep.model.StateSpinnerAdapter;
 import com.permutassep.model.StateSpinnerBaseAdapter;
 
 import java.util.ArrayList;
