@@ -17,21 +17,32 @@
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:id="@+id/spnState"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dialog"/>
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:id="@+id/spnMunicipality"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:spinnerMode="dialog" />º
+            android:spinnerMode="dialog"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/spnLocality"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:spinnerMode="dialog" />
 
         </LinearLayout>
 

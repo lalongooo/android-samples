@@ -10,9 +10,11 @@ import android.widget.Spinner;
 
 import com.permutassep.inegifacil.model.City;
 import com.permutassep.inegifacil.model.State;
+import com.permutassep.inegifacil.model.Town;
 import com.permutassep.inegifacil.rest.InegiFacilRestClient;
 import com.permutassep.model.CitySpinnerBaseAdapter;
 import com.permutassep.model.StateSpinnerBaseAdapter;
+import com.permutassep.model.TownSpinnerBaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Spinner spnState;
     private Spinner spnMunicipality;
+    private Spinner spnLocality;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
         spnState = (Spinner) findViewById(R.id.spnState);
         spnMunicipality = (Spinner) findViewById(R.id.spnMunicipality);
+        spnLocality = (Spinner) findViewById(R.id.spnLocality);
         fillStates();
     }
 
@@ -54,13 +58,10 @@ public class MainActivity extends ActionBarActivity {
 
                 State selectedState = (State)parent.getItemAtPosition(position);
                 if(selectedState.getId() != 0){
-
                     try {
-                        Log.i("INFO: ", "State name: " + selectedState.getStateName() + ", State id: " + selectedState.getId());
                         InegiFacilRestClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<List<City>>() {
                             @Override
                             public void success(List<City> cities, Response response) {
-                                Log.d("Number of cities:", (String.valueOf(cities.size())));
                                 spnMunicipality.setAdapter(new CitySpinnerBaseAdapter(getApplicationContext(), cities));
                             }
 
@@ -73,15 +74,41 @@ public class MainActivity extends ActionBarActivity {
                     }catch (Exception ex){
                         Log.d("An error ocurred", ex.getMessage());
                     }
-
                 }
-
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
 
+
+        spnMunicipality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                City selectedCity = (City) parent.getItemAtPosition(position);
+                if(position != 0){
+                    try {
+                        InegiFacilRestClient.get().getTowns(String.valueOf(selectedCity.getClaveEntidad()), String.valueOf(selectedCity.getClaveMunicipio()), new Callback<List<Town>>() {
+                            @Override
+                            public void success(List<Town> towns, Response response) {
+                                spnLocality.setAdapter(new TownSpinnerBaseAdapter(getApplicationContext(), towns));
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                Log.d("An error occurred", "");
+                            }
+                        });
+
+                    }catch (Exception ex){
+                        Log.d("An error ocurred", ex.getMessage());
+                    }
+                }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 

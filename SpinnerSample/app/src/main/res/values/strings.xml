@@ -5,6 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="main_select_state">Selecciona Estado</string>
+
     <string-array name="states">
         <item>Todo México</item>
         <item>Aguascalientes</item>
