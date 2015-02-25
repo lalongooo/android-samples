@@ -8,10 +8,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.permutassep.inegifacil.InegiFacilRestClient;
+import com.permutassep.inegifacil.model.City;
 import com.permutassep.model.State;
 import com.permutassep.model.StateSpinnerBaseAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -32,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void fillStates(){
 
-        ArrayList<State> alStates = new ArrayList<State>();
+        ArrayList<State> alStates = new ArrayList<>();
         String [] states = getResources().getStringArray(R.array.states);
 
         for (int i = 0; i < states.length; i++){
@@ -44,8 +51,28 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.i("INFO: ", "State name: " + ((State)parent.getItemAtPosition(position)).getStateName() + ", State id: " + ((State)parent.getItemAtPosition(position)).getId());
+                State selectedState = (State)parent.getItemAtPosition(position);
+                if(selectedState.getId() != 0){
 
+                    try {
+                        Log.i("INFO: ", "State name: " + selectedState.getStateName() + ", State id: " + selectedState.getId());
+                        InegiFacilRestClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<List<City>>() {
+                            @Override
+                            public void success(List<City> cities, Response response) {
+                                Log.d("Number of cities:", (String.valueOf(cities.size())));
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                Log.d("An error occurred", "");
+                            }
+                        });
+
+                    }catch (Exception ex){
+                        Log.d("An error ocurred", ex.getMessage());
+                    }
+
+                }
 
             }
 
