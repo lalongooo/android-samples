@@ -1,4 +1,4 @@
-package com.permutassep.model;
+package com.permutassep.inegifacil.model;
 
 import com.google.gson.annotations.Expose;
 

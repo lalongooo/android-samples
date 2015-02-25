@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lalongooo on 23/02/15.
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public class StateSpinnerBaseAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<State> states = new ArrayList<State>();
+    private List<State> states = new ArrayList<>();
 
-    public StateSpinnerBaseAdapter(Context context, ArrayList<State> states) {
+    public StateSpinnerBaseAdapter(Context context, List<State> states) {
         this.context = context;
         this.states = states;
     }
