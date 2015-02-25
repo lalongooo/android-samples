@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.permutassep.inegifacil.model.State;
+import com.permutassep.inegifacil.model.City;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,36 +16,36 @@ import java.util.List;
 /**
  * Created by lalongooo on 23/02/15.
  */
-public class StateSpinnerBaseAdapter extends BaseAdapter {
+public class CitySpinnerBaseAdapter extends BaseAdapter {
 
     private Context context;
-    private List<State> states = new ArrayList<>();
+    private List<City> cities = new ArrayList<>();
 
-    public StateSpinnerBaseAdapter(Context context, List<State> states) {
+    public CitySpinnerBaseAdapter(Context context, List<City> cities) {
         this.context = context;
-        this.states = states;
+        this.cities = cities;
     }
 
     @Override
     public int getCount() {
-        return states.size();
+        return cities.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return states.get(position);
+        return cities.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return states.get(position).getId();
+        return cities.get(position).getClaveMunicipio();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TextView textview = (TextView) inflater.inflate(android.R.layout.simple_list_item_1, null);
-        textview.setText(states.get(position).getStateName());
+        textview.setText(cities.get(position).getNombreMunicipio());
         textview.setTextColor(Color.BLACK);
         return textview;
     }

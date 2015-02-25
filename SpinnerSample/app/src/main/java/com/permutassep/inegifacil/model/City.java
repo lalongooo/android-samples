@@ -15,7 +15,7 @@ public class City {
     private String nombreEntidad;
     @SerializedName("clave_municipio")
     @Expose
-    private String claveMunicipio;
+    private int claveMunicipio;
     @SerializedName("nombre_municipio")
     @Expose
     private String nombreMunicipio;
@@ -97,7 +97,7 @@ public class City {
      * @return
      * The claveMunicipio
      */
-    public String getClaveMunicipio() {
+    public int getClaveMunicipio() {
         return claveMunicipio;
     }
 
@@ -106,7 +106,7 @@ public class City {
      * @param claveMunicipio
      * The clave_municipio
      */
-    public void setClaveMunicipio(String claveMunicipio) {
+    public void setClaveMunicipio(int claveMunicipio) {
         this.claveMunicipio = claveMunicipio;
     }
 
