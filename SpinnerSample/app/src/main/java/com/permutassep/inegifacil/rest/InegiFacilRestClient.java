@@ -8,7 +8,7 @@ import retrofit.RestAdapter;
 public class InegiFacilRestClient {
 
     private static IInegiFacilService restClient;
-    private static String ROOT = "http://inegifacil.com/";
+    private static String BASE_URL = "http://inegifacil.com/";
 
     static {
         setupRestClient();
@@ -22,7 +22,7 @@ public class InegiFacilRestClient {
 
     private static void setupRestClient() {
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(ROOT)
+                .setEndpoint(BASE_URL)
                 .build();
 //                .setClient(new OkClient(new OkHttpClient()))
 //                .builder.setLogLevel(RestAdapter.LogLevel.FULL);
