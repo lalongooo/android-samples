@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-import com.permutassep.inegifacil.InegiFacilRestClient;
+import com.permutassep.inegifacil.rest.InegiFacilRestClient;
 import com.permutassep.inegifacil.model.City;
+import com.permutassep.inegifacil.model.Town;
 import com.permutassep.model.State;
 import com.permutassep.model.StateSpinnerBaseAdapter;
 
@@ -39,21 +40,14 @@ public class MainActivity extends ActionBarActivity {
 
     private void fillStates(){
 
-        ArrayList<State> alStates = new ArrayList<>();
-        String [] states = getResources().getStringArray(R.array.states);
-
-        for (int i = 0; i < states.length; i++){
-            alStates.add(new State(i, states[i]));
-        }
-
-        spnState.setAdapter(new StateSpinnerBaseAdapter(getApplicationContext(), alStates));
+        spnState.setAdapter(new StateSpinnerBaseAdapter(getApplicationContext(), getStates()));
         spnState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 State selectedState = (State)parent.getItemAtPosition(position);
-                if(selectedState.getId() != 0){
 
+                if(selectedState.getId() != 0){
                     try {
                         Log.i("INFO: ", "State name: " + selectedState.getStateName() + ", State id: " + selectedState.getId());
                         InegiFacilRestClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<List<City>>() {
@@ -64,16 +58,14 @@ public class MainActivity extends ActionBarActivity {
 
                             @Override
                             public void failure(RetrofitError error) {
-                                Log.d("An error occurred", "");
+                                Log.d("An error occurred", error.getMessage());
                             }
                         });
 
                     }catch (Exception ex){
                         Log.d("An error ocurred", ex.getMessage());
                     }
-
                 }
-
             }
 
             @Override
@@ -81,6 +73,42 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+    }
+
+    public List<State> getStates(){
+
+        List<State> lStates = new ArrayList<>();
+        String [] states = getResources().getStringArray(R.array.states);
+
+        for (int i = 0; i < states.length; i++){
+            lStates.add(new State(i, states[i]));
+        }
+
+        return lStates;
+    }
+
+    private List<City> lCities = null;
+
+    public List<City> getCities(State state){
+
+        InegiFacilRestClient.get().getCities(String.valueOf(state.getId()), new Callback<List<City>>() {
+            @Override
+            public void success(List<City> cities, Response response) {
+                lCities = cities;
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("An error occurred", error.getMessage());
+            }
+        });
+
+        return lCities;
+
+    }
+
+    public List<Town> getTowns(City city){
+
     }
 
 

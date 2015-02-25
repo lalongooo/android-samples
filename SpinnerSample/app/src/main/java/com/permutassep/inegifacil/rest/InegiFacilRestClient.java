@@ -1,16 +1,13 @@
-package com.permutassep.inegifacil;
-
-import com.squareup.okhttp.OkHttpClient;
+package com.permutassep.inegifacil.rest;
 
 import retrofit.RestAdapter;
-import retrofit.client.OkClient;
 
 /**
  * Created by jorge.hernandez on 2/24/2015.
  */
 public class InegiFacilRestClient {
 
-    private static IInegiFacilService REST_CLIENT;
+    private static IInegiFacilService restClient;
     private static String ROOT = "http://inegifacil.com/";
 
     static {
@@ -20,7 +17,7 @@ public class InegiFacilRestClient {
     private InegiFacilRestClient() {}
 
     public static IInegiFacilService get() {
-        return REST_CLIENT;
+        return restClient;
     }
 
     private static void setupRestClient() {
@@ -30,6 +27,6 @@ public class InegiFacilRestClient {
 //                .setClient(new OkClient(new OkHttpClient()))
 //                .builder.setLogLevel(RestAdapter.LogLevel.FULL);
 
-        REST_CLIENT = restAdapter.create(IInegiFacilService.class);
+        restClient = restAdapter.create(IInegiFacilService.class);
     }
 }
