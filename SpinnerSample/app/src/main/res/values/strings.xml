@@ -6,6 +6,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="main_select_state">Selecciona Estado</string>
+    <string name="main_loading_cities">Cargando ciudades</string>
+    <string name="main_loading_localities">Cargando localidades</string>
+    <string name="please_wait">Por favor, espera...</string>
 
     <string-array name="states">
         <item>Todo México</item>
