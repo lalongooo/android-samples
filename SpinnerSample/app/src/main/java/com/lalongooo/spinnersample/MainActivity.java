@@ -23,7 +23,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-
 public class MainActivity extends ActionBarActivity {
 
     private Spinner spnState;
@@ -58,6 +57,12 @@ public class MainActivity extends ActionBarActivity {
 
                 State selectedState = (State)parent.getItemAtPosition(position);
                 if(selectedState.getId() != 0){
+
+                    // Remove localities
+                    if (spnLocality.getAdapter() != null && spnLocality.getAdapter().getCount() > 0){
+                        spnLocality.setAdapter(null);
+                    }
+
                     try {
                         InegiFacilRestClient.get().getCities(String.valueOf(selectedState.getId()), new Callback<List<City>>() {
                             @Override
