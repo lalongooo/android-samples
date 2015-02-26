@@ -75,7 +75,6 @@ public class MainActivity extends ActionBarActivity {
 
                             @Override
                             public void failure(RetrofitError error) {
-                                Log.d("An error occurred", "");
                                 hideDialog();
                             }
                         });
@@ -113,7 +112,6 @@ public class MainActivity extends ActionBarActivity {
 
                             @Override
                             public void failure(RetrofitError error) {
-                                Log.d("An error occurred", "");
                                 hideDialog();
                             }
                         });
@@ -134,7 +132,6 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -148,10 +145,16 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void resetSpinner(Spinner spinner){
-        // Remove localities
         if (spinner.getAdapter() != null && spinner.getAdapter().getCount() > 0){
             spinner.setAdapter(null);
         }
+    }
+
+
+    public void getSelected(View v){
+        State state = (State) spnState.getSelectedItem();
+        City sity = (City) spnMunicipality.getSelectedItem();
+        Town town = (Town) spnLocality.getSelectedItem();
     }
 
 }

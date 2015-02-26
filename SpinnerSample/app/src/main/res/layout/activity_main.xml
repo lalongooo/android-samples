@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
 
         <Spinner
             android:layout_width="match_parent"
@@ -50,7 +51,18 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Selected"
+            android:id="@+id/button"
+            android:onClick="getSelected"
+            android:layout_margin="25dp"
+            android:layout_gravity="center_horizontal" />
+
         </LinearLayout>
+
+
 
 
 </RelativeLayout>
