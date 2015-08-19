@@ -18,3 +18,7 @@
 2. **SpinnerSample**
 
 	Different examples using the Spinner view
+
+3. **CircleProgressBar**
+
+	Show a circular progress bar within the ObjectAnimator class and the AsyncTask.
