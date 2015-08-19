@@ -22,3 +22,5 @@
 3. **CircleProgressBar**
 
 	Show a circular progress bar within the ObjectAnimator class and the AsyncTask.
+	
+	![Image](https://raw.githubusercontent.com/lalongooo/android-samples/master/CircleProgressBar/screenshots/device-2015-08-19-180340.png)
